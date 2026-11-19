@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ed">
+  <meta name="description" content="Overlay PNG Al-Qur’an full 30 juz untuk editing video murottal, Reels, Shorts, dan konten dakwah. File transparan, pilihan terjemahan Indonesia, English, dan Dual Language.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Overlay Quran — Editing Murottal Jadi Lebih Praktis">
+  <meta property="og:description" content="Ayat dan terjemahan sudah disiapkan dalam PNG transparan. Pilih file, pasang ke timeline, lalu lanjutkan editing.">
+  <meta property="og:image" content="https://YOUR-DOMAIN/assets/og-cover.webp">
+  <meta property="og:url" content="https://YOUR-DOMAIN/">
+  <title>Overlay Quran — Editing Murottal Jadi Lebih Praktis</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" as="image" href="assets/7.webp" fetchpriority="high">
+  <style>
+    :root{
+      --ink:#20211e; --muted:#686a63; --gold:#b4832e; --gold-dark:#8c641d;
+      --cream:#f7f4ed; --paper:#fffefa; --line:#e9e3d7; --soft:#eeece6;
+      --green:#244b42; --shadow:0 18px 54px rgba(45,38,22,.09);
+      --radius:22px; --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+    img,video{max-width:100%;display:block}
+    a{color:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d9aa57;outline-offset:3px}
+    .container{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--gold-dark);font-size:.73rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:22px;height:2px;background:var(--gold);border-radius:2px}
+    .section{padding:94px 0}
+    .section-head{max-width:690px;margin:0 auto 42px;text-align:center}
+    .section-head h2{font-size:clamp(2rem,4vw,3.15rem);line-height:1.08;letter-spacing:-.055em;margin:14px 0 15px;font-weight:900}
+    .section-head h2 span,.gold{color:var(--gold-dark)}
+    .section-head p{color:var(--muted);font-size:1.02rem;margin:0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 23px;border-radius:999px;text-decoration:none;border:1px solid transparent;font-weight:850;font-size:.94rem;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--gold);color:#fff;box-shadow:0 9px 22px rgba(180,131,46,.22)}
+    .btn-primary:hover{background:#9d7126;box-shadow:0 12px 26px rgba(180,131,46,.28)}
+    .btn-dark{background:var(--ink);color:white}
+    .btn-outline{border-color:var(--line);background:#fff;color:var(--ink)}
+    .btn-small{min-height:46px;padding-inline:18px;font-size:.88rem}
+    .arrow{font-size:1.15em;line-height:0}
+
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:30;background:rgba(255,254,250,.91);backdrop-filter:blur(14px);border-bottom:1px solid rgba(233,227,215,.8)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-weight:950;letter-spacing:-.04em;line-height:1}
+    .brand-mark{width:38px;height:38px;display:grid;place-items:center;background:var(--ink);color:#edc678;border-radius:12px;font-family:Georgia,serif;font-size:21px}
+    .brand-name{font-size:.92rem;letter-spacing:.045em}
+    .brand-name small{display:block;color:var(--muted);font-size:.57rem;letter-spacing:.2em;margin-top:5px;font-weight:800}
+    .nav-right{display:flex;align-items:center;gap:24px}
+    .nav-link{font-size:.86rem;text-decoration:none;color:var(--muted);font-weight:750}
+    .nav-link:hover{color:var(--ink)}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden;background:var(--cream);padding:76px 0 70px}
+    .hero:before{content:"";position:absolute;right:-180px;top:-250px;width:600px;height:600px;border:1px solid rgba(180,131,46,.15);border-radius:50%;box-shadow:0 0 0 44px rgba(180,131,46,.035),0 0 0 90px rgba(180,131,46,.025);pointer-events:none}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:62px}
+    .hero-copy{position:relative;z-index:1}
+    .hero h1{font-size:clamp(2.7rem,5vw,4.7rem);line-height:.99;letter-spacing:-.068em;font-weight:950;margin:19px 0 22px;max-width:670px}
+    .hero h1 span{color:var(--gold-dark)}
+    .hero-lead{font-size:1.12rem;color:#55574f;max-width:580px;margin:0 0 24px;line-height:1.72}
+    .hero-points{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 29px}
+    .pill{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;background:rgba(255,255,255,.78);border:1px solid rgba(224,215,198,.8);border-radius:999px;font-size:.77rem;font-weight:800;color:#484940}
+    .pill svg{width:14px;height:14px;color:var(--gold-dark)}
+    .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+    .micro-trust{margin-top:17px;color:var(--muted);font-size:.78rem}
+    .hero-visual{position:relative;min-width:0}
+    .hero-product{position:relative;background:#fff;border:1px solid rgba(222,214,198,.8);padding:14px;border-radius:24px;box-shadow:var(--shadow);transform:rotate(1.1deg)}
+    .hero-product img{width:100%;border-radius:15px}
+    .hero-float{position:absolute;left:-35px;bottom:28px;background:var(--ink);color:#fff;padding:16px 19px;border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.18);transform:rotate(-2deg)}
+    .hero-float strong{display:block;font-size:1.22rem;line-height:1.1;color:#f0c66f}
+    .hero-float span{font-size:.72rem;color:#e3e1d9}
+    .hero-mini{position:absolute;right:-20px;top:22px;width:132px;padding:7px;background:#fff;border-radius:15px;box-shadow:0 12px 28px rgba(0,0,0,.13);transform:rotate(5deg)}
+    .hero-mini img{border-radius:9px}
+
+    /* Stats */
+    .stat-strip{background:#fff;border-bottom:1px solid var(--line)}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);padding:25px 0}
+    .stat{text-align:center;padding:5px 18px;border-right:1px solid var(--line)}
+    .stat:last-child{border:0}
+    .stat strong{display:block;font-size:1.65rem;line-height:1.1;font-weight:950;letter-spacing:-.045em;color:var(--gold-dark)}
+    .stat span{display:block;color:var(--muted);font-size:.77rem;margin-top:7px;font-weight:700}
+
+    /* Problem / workflow */
+    .problem{background:#fff}
+    .problem-grid{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:56px}
+    .problem-copy h2{font-size:clamp(2rem,3.8vw,3.35rem);letter-spacing:-.06em;line-height:1.04;margin:13px 0 18px}
+    .problem-copy p{color:var(--muted);margin:0 0 20px;max-width:500px}
+    .task-list{display:grid;gap:11px;margin:24px 0 0;padding:0;list-style:none}
+    .task-list li{display:flex;gap:11px;align-items:flex-start;color:#4f514a;font-weight:650;font-size:.93rem}
+    .xmark{width:22px;height:22px;flex:none;border-radius:50%;display:grid;place-items:center;background:#f4eee3;color:var(--gold-dark);font-size:.8rem;font-weight:950;margin-top:1px}
+    .workflow-card{background:#f4f2ed;border:1px solid #ebe6dd;border-radius:25px;padding:20px;box-shadow:0 15px 40px rgba(32,33,30,.06)}
+    .workflow-card img{width:100%;border-radius:16px}
+    .workflow-caption{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:17px}
+    .workflow-step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 12px}
+    .workflow-step b{display:block;font-size:.79rem;margin-bottom:4px}
+    .workflow-step span{font-size:.7rem;color:var(--muted);line-height:1.45}
+    .step-no{display:grid;place-items:center;width:22px;height:22px;background:#f4e8ce;color:#805a19;border-radius:7px;font-size:.68rem;font-weight:900;margin-bottom:9px}
+
+    /* What inside */
+    .inside{background:var(--cream)}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .feature{background:#fff;border:1px solid #eee8dc;border-radius:20px;padding:23px;min-height:186px}
+    .feature-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#f5ecd9;color:var(--gold-dark);margin-bottom:17px}
+    .feature-icon svg{width:21px;height:21px}
+    .feature h3{font-size:1.03rem;line-height:1.25;margin:0 0 8px;letter-spacing:-.025em}
+    .feature p{font-size:.85rem;color:var(--muted);margin:0;line-height:1.6}
+
+    /* Demo */
+    .demo{background:var(--ink);color:white}
+    .demo .section-head p{color:#c6c5bd}
+    .demo .eyebrow{color:#e5c27e}
+    .demo .eyebrow:before{background:#e5c27e}
+    .demo .section-head h2 span{color:#e9c477}
+    .demo-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:20px;align-items:stretch}
+    .video-card{background:#30312d;border:1px solid #45463f;border-radius:21px;overflow:hidden}
+    .video-card.vertical .video-frame{max-width:360px;margin:0 auto;background:#151612}
+    .video-frame{background:#111;aspect-ratio:16/9;overflow:hidden}
+    .video-card.vertical .video-frame{aspect-ratio:9/16}
+    .video-frame video{width:100%;height:100%;object-fit:contain;background:#111}
+    .video-info{padding:18px 20px 20px}
+    .video-info h3{font-size:1rem;margin:0 0 5px}
+    .video-info p{font-size:.8rem;color:#bbbcb4;margin:0;line-height:1.55}
+    .video-note{margin-top:22px;color:#bdbeb6;font-size:.76rem;text-align:center}
+
+    /* Examples */
+    .examples{background:#fff}
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .gallery figure{margin:0;background:#f6f4ef;border:1px solid var(--line);border-radius:18px;padding:11px;overflow:hidden}
+    .gallery figure:nth-child(1){grid-column:span 5}
+    .gallery figure:nth-child(2){grid-column:span 4}
+    .gallery figure:nth-child(3){grid-column:span 3}
+    .gallery figure:nth-child(4){grid-column:span 6}
+    .gallery figure:nth-child(5){grid-column:span 6}
+    .gallery img{width:100%;border-radius:11px;cursor:zoom-in;transition:transform .35s ease}
+    .gallery img:hover{transform:scale(1.015)}
+    .gallery figcaption{padding:12px 5px 4px;font-size:.8rem;font-weight:800;color:#4b4b43}
+    .gallery figcaption span{display:block;color:var(--muted);font-size:.71rem;font-weight:550;margin-top:3px}
+
+    /* Pricing */
+    .pricing{background:var(--cream)}
+    .pricing-intro{max-width:760px;margin:-20px auto 33px;text-align:center;color:var(--muted);font-size:.9rem}
+    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+    .price-card{position:relative;background:#fff;border:1px solid #e9e2d6;border-radius:22px;padding:26px;display:flex;flex-direction:column;box-shadow:0 8px 25px rgba(38,33,24,.035)}
+    .price-card.featured{border:2px solid var(--gold);box-shadow:0 18px 42px rgba(129,94,34,.13);transform:translateY(-9px)}
+    .recommend{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;border-radius:999px;padding:6px 13px;font-size:.68rem;font-weight:900;letter-spacing:.07em;white-space:nowrap}
+    .price-tag{font-size:.69rem;color:var(--gold-dark);font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+    .price-card h3{font-size:1.33rem;letter-spacing:-.04em;margin:10px 0 6px;line-height:1.18}
+    .price-desc{color:var(--muted);font-size:.83rem;min-height:47px;margin:0}
+    .price{font-size:2.3rem;line-height:1.1;font-weight:950;letter-spacing:-.07em;margin:22px 0 4px}
+    .price-sub{font-size:.73rem;color:var(--muted);margin-bottom:19px}
+    .includes{list-style:none;margin:0 0 23px;padding:16px 0 0;border-top:1px solid var(--line);display:grid;gap:10px;flex:1}
+    .includes li{display:flex;align-items:flex-start;gap:9px;font-size:.82rem;color:#4d4f48}
+    .check{color:#537b5d;font-weight:950;font-size:1rem;line-height:1.3}
+    .price-card .btn{width:100%;margin-top:auto}
+    .price-footnote{text-align:center;margin:23px auto 0;color:var(--muted);font-size:.76rem;max-width:700px}
+    .decision-bridge{max-width:900px;margin:33px auto 0;background:#fff;border:1px solid #e9e2d6;border-radius:18px;padding:20px 23px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px}
+    .decision-bridge strong{display:block;margin-bottom:4px}
+    .decision-bridge p{margin:0;color:var(--muted);font-size:.82rem}
+
+    /* Usage and FAQ */
+    .usage{background:#fff}
+    .usage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .usage-item{border:1px solid var(--line);border-radius:17px;padding:19px;background:#fff}
+    .usage-item strong{display:block;font-size:.9rem;margin:10px 0 5px}
+    .usage-item p{font-size:.76rem;color:var(--muted);margin:0}
+    .usage-symbol{font-size:1.35rem;color:var(--gold-dark)}
+    .license-note{margin-top:24px;background:#f7f4ed;border-left:3px solid var(--gold);border-radius:0 14px 14px 0;padding:17px 20px;color:#56574f;font-size:.82rem}
+    .faq{background:#f4f2ed}
+    .faq-list{max-width:820px;margin:0 auto;display:grid;gap:10px}
+    details{background:#fff;border:1px solid #e9e5dc;border-radius:15px;padding:0 20px}
+    summary{position:relative;cursor:pointer;list-style:none;padding:18px 34px 18px 0;font-weight:850;font-size:.92rem}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";position:absolute;right:2px;top:14px;font-size:1.4rem;color:var(--gold-dark);font-weight:500}
+    details[open] summary:after{content:"−"}
+    details p{margin:0;padding:0 0 18px;color:var(--muted);font-size:.84rem;max-width:740px}
+
+    /* Close */
+    .closing{padding:75px 0;background:#242520;color:white;text-align:center}
+    .closing h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;letter-spacing:-.06em;margin:14px auto 14px;max-width:700px}
+    .closing h2 span{color:#e8c175}
+    .closing p{color:#c7c7bd;max-width:600px;margin:0 auto 26px}
+    .closing .eyebrow{color:#e8c175}
+    .closing .eyebrow:before{background:#e8c175}
+    .site-footer{background:#1a1b17;color:#bbbcb4;padding:26px 0 34px;font-size:.74rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+    .footer-brand{color:#fff;font-weight:850;letter-spacing:.04em;margin-bottom:8px}
+    .disclosure{max-width:620px;line-height:1.65}
+    .footer-links{display:flex;gap:18px;white-space:nowrap}
+    .footer-links a{color:#ddd;text-decoration:none}
+    .footer-links a:hover{text-decoration:underline}
+    .mobile-cta{display:none}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;z-index:60;background:rgba(17,18,15,.88);display:none;align-items:center;justify-content:center;padding:25px}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:min(100%,1100px);max-height:88vh;width:auto;border-radius:12px;box-shadow:0 20px 70px rgba(0,0,0,.35)}
+    .lightbox button{position:absolute;top:18px;right:22px;width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#111;font-size:1.6rem;cursor:pointer}
+
+    @media(max-width:950px){
+      .hero-grid{gap:34px;grid-template-columns:1fr .9fr}
+      .hero h1{font-size:clamp(2.6rem,6.1vw,4rem)}
+      .hero-mini{right:-10px;width:105px}
+      .feature-grid{grid-template-columns:repeat(2,1fr)}
+      .usage-grid{grid-template-columns:repeat(2,1fr)}
+      .problem-grid{gap:30px}
+    }
+    @media(max-width:700px){
+      .container{width:min(100% - 34px,var(--max))}
+      .section{padding:68px 0}
+      .nav{height:66px}
+      .nav-right{gap:10px}
+      .nav-link{display:none}
+      .nav .btn{min-height:42px;padding:0 15px;font-size:.78rem}
+      .hero{padding:53px 0 46px}
+      .hero-grid{grid-template-columns:1fr;gap:36px}
+      .hero-copy{text-align:center}
+      .hero-copy .eyebrow{justify-content:center}
+      .hero h1{font-size:clamp(2.65rem,12vw,4.1rem);margin:17px auto 17px;max-width:560px}
+      .hero-lead{font-size:1rem;margin-inline:auto;max-width:520px}
+      .hero-points{justify-content:center;gap:7px}
+      .pill{font-size:.7rem;padding:7px 10px}
+      .hero-actions{justify-content:center}
+      .hero-actions .btn{width:100%;max-width:370px}
+      .micro-trust{font-size:.72rem}
+      .hero-visual{width:min(100%,500px);margin:0 auto;padding:0 13px}
+      .hero-product{padding:9px;border-radius:19px}
+      .hero-product img{border-radius:12px}
+      .hero-float{left:-5px;bottom:13px;padding:12px 14px}
+      .hero-mini{right:0;top:-13px;width:88px}
+      .stats{padding:19px 0}
+      .stat{padding:4px 8px}
+      .stat strong{font-size:1.35rem}
+      .stat span{font-size:.64rem;line-height:1.35}
+      .problem-grid{grid-template-columns:1fr;gap:28px}
+      .problem-copy{text-align:center}
+      .problem-copy .eyebrow{justify-content:center}
+      .problem-copy p{margin-inline:auto}
+      .task-list{max-width:440px;margin-inline:auto;text-align:left}
+      .workflow-card{padding:11px;border-radius:18px}
+      .workflow-caption{gap:7px}
+      .workflow-step{padding:10px 8px}
+      .workflow-step b{font-size:.72rem}
+      .workflow-step span{font-size:.64rem}
+      .feature-grid{grid-template-columns:1fr 1fr;gap:10px}
+      .feature{padding:17px;min-height:0;border-radius:16px}
+      .feature-icon{width:37px;height:37px;margin-bottom:12px}
+      .feature h3{font-size:.88rem}
+      .feature p{font-size:.74rem}
+      .demo-grid{grid-template-columns:1fr;gap:14px}
+      .video-card.vertical .video-frame{max-width:270px}
+      .video-info{padding:15px 16px}
+      .gallery{gap:9px}
+      .gallery figure{padding:7px;border-radius:13px}
+      .gallery figure:nth-child(n){grid-column:span 6}
+      .gallery figcaption{font-size:.73rem;padding:9px 3px 2px}
+      .gallery figcaption span{font-size:.65rem}
+      .price-grid{grid-template-columns:1fr;gap:17px;max-width:460px;margin-inline:auto}
+      .price-card{padding:23px;border-radius:18px}
+      .price-card.featured{transform:none;order:-1;margin-top:9px}
+      .price-desc{min-height:0}
+      .decision-bridge{grid-template-columns:1fr;text-align:center;padding:18px}
+      .decision-bridge .btn{width:100%}
+      .usage-grid{grid-template-columns:1fr 1fr;gap:9px}
+      .usage-item{padding:15px}
+      .footer-inner{display:block}
+      .footer-links{margin-top:17px;white-space:normal}
+      .mobile-cta{display:block;position:fixed;z-index:25;bottom:0;left:0;right:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,254,250,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+      .mobile-cta .btn{width:100%;min-height:48px}
+      body{padding-bottom:74px}
+    }
+    @media(max-width:380px){
+      .feature-grid,.usage-grid{grid-template-columns:1fr}
+      .hero h1{font-size:2.55rem}
+      .stat strong{font-size:1.2rem}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+  </style>
+  <!-- OPSIONAL: Pasang Meta Pixel setelah membuat Pixel di Events Manager.
+       Ganti YOUR_META_PIXEL_ID dengan ID milikmu. Jangan aktifkan sebelum ID benar. -->
+  <script>
+    window.OVQ_META_PIXEL_ID = ""; // contoh: "123456789012345"
+    if (window.OVQ_META_PIXEL_ID) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', window.OVQ_META_PIXEL_ID); fbq('track', 'PageView');
+    }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Overlay Quran, kembali ke atas">
+        <span class="brand-mark" aria-hidden="true">ق</span>
+        <span class="brand-name">QURAN OVERLAY<small>ASET EDITING VIDEO</small></span>
+      </a>
+      <div class="nav-right">
+        <a class="nav-link" href="#contoh">Lihat contoh</a>
+        <a class="nav-link" href="#isi">Apa yang didapat?</a>
+        <a class="btn btn-primary btn-small" href="#paket">Pilih edisi <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Aset editing video • Full 30 juz</span>
+          <h1>Editing murottal <span>tanpa</span> repot copas ayat.</h1>
+          <p class="hero-lead">Ayat Al-Qur’an dan terjemahannya sudah disiapkan dalam file PNG transparan. Pilih file, pasang ke timeline, sesuaikan durasi, lalu lanjutkan editing.</p>
+          <div class="hero-points">
+            <span class="pill"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Full 30 juz</span>
+            <span class="pill"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>PNG transparan</span>
+            <span class="pill"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>3 opsi terjemahan</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#paket">Lihat edisi & harga <span class="arrow">→</span></a>
+            <a class="btn btn-outline" href="#demo">Lihat contoh pemakaian</a>
+          </div>
+          <p class="micro-trust">Bukan aplikasi editing atau kursus. Ini adalah aset PNG untuk dipakai di software editing yang mendukung format PNG.</p>
+        </div>
+        <div class="hero-visual" aria-label="Pratinjau aset Quran Overlay">
+          <div class="hero-product"><img src="assets/7.webp" alt="Poster materi promosi Quran Overlay: full 30 juz, drag and drop, dan editing anti ribet" width="1080" height="1080" fetchpriority="high"></div>
+          <div class="hero-mini"><img src="assets/6.webp" alt="Mockup paket Overlay PNG Quran Vertical" width="1080" height="1080" loading="lazy"></div>
+          <div class="hero-float"><strong>30 JUZ</strong><span>Al-Fatihah sampai An-Naas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stat-strip" aria-label="Ringkasan produk">
+      <div class="container stats">
+        <div class="stat"><strong>30 Juz</strong><span>Dari Al-Fatihah sampai An-Naas</span></div>
+        <div class="stat"><strong>58.000+</strong><span>File PNG yang tercantum di halaman produk</span></div>
+        <div class="stat"><strong>3 versi</strong><span>Indonesia, English, dan Dual Language</span></div>
+      </div>
+    </section>
+
+    <section class="section problem" id="alur">
+      <div class="container problem-grid">
+        <div class="problem-copy">
+          <span class="eyebrow">Alur kerja lebih ringkas</span>
+          <h2>Waktu editing sebaiknya dipakai untuk <span class="gold">berkarya.</span></h2>
+          <p>Proses menyiapkan ayat satu per satu sering memecah fokus: mencari teks, menyalin terjemahan, mengatur posisi, lalu memecah ayat panjang.</p>
+          <ul class="task-list">
+            <li><span class="xmark">×</span><span>Tidak perlu mengetik ulang ayat dan terjemahan satu per satu.</span></li>
+            <li><span class="xmark">×</span><span>Tidak perlu menata tampilan teks dari awal untuk setiap potongan.</span></li>
+            <li><span class="xmark">×</span><span>Tidak perlu memotong ayat panjang secara manual sebelum mulai editing.</span></li>
+          </ul>
+        </div>
+        <div class="workflow-card">
+          <img src="assets/7.webp" alt="Contoh aset Overlay Quran yang dipasang di timeline editing" width="1080" height="1080" loading="lazy">
+          <div class="workflow-caption">
+            <div class="workflow-step"><span class="step-no">01</span><b>Pilih file</b><span>Cari surah dan ayat yang dibutuhkan.</span></div>
+            <div class="workflow-step"><span class="step-no">02</span><b>Drag & drop</b><span>Letakkan PNG ke timeline video.</span></div>
+            <div class="workflow-step"><span class="step-no">03</span><b>Atur durasi</b><span>Sesuaikan dengan audio murottal.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section inside" id="isi">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Yang disiapkan di dalamnya</span>
+          <h2>Bukan sekadar kumpulan teks. <span>Sudah disusun untuk editing.</span></h2>
+          <p>Ringkasan fitur berdasarkan halaman penawaran produk. Detail edisi yang dipilih akan mengikuti paket pada halaman checkout.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5 12 2l8 3.5v13L12 22l-8-3.5v-13Z"/><path d="M4.5 6 12 9.5 19.5 6M12 9.5V21"/></svg></div>
+            <h3>Lengkap 30 juz</h3><p>Dari Al-Fatihah sampai An-Naas, untuk kebutuhan konten sepanjang Al-Qur’an.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 8h.01M16 16h.01M3 15l5-5 4 4 3-3 6 6"/></svg></div>
+            <h3>PNG dengan latar transparan</h3><p>Mudah diletakkan di atas footage tanpa perlu menghapus background satu per satu.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16M4 12h16M4 19h16"/><path d="M8 3v4M16 10v4M11 17v4"/></svg></div>
+            <h3>3 pilihan terjemahan</h3><p>Indonesia (Kemenag RI), English (Shaheeh International), dan Dual Language.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h4M8 16h8"/><path d="m15 11 2 2 3-3"/></svg></div>
+            <h3>Segmentasi ayat</h3><p>Ayat panjang sudah dipecah ke beberapa bagian agar lebih mudah disusun di timeline.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5m0 14h16"/><path d="M8 15V9m4 10V5m4 10V8m4 11V6"/></svg></div>
+            <h3>Tampilan bergaya mushaf</h3><p>Halaman produk menyebut font dirancang menyerupai Mushaf Madinah 1441H.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="M8 20V4m8 16V4M2.5 9h19M2.5 15h19"/></svg></div>
+            <h3>Siap untuk video vertikal</h3><p>Dapat digunakan untuk murottal, Reels, Shorts, TikTok, YouTube, dan konten dakwah.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section demo" id="demo">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Lihat sebelum memilih</span>
+          <h2>Contoh tampilan dan <span>workflow editing.</span></h2>
+          <p>Putar cuplikan berikut untuk melihat gambaran materi promosi dan pemakaian overlay pada video.</p>
+        </div>
+        <div class="demo-grid">
+          <article class="video-card vertical">
+            <div class="video-frame">
+              <video controls playsinline preload="none" poster="assets/poster-vertical.jpg" aria-label="Video contoh promosi vertikal Quran Overlay">
+                <source src="assets/demo-vertical.mp4" type="video/mp4">
+                Browser kamu belum mendukung pemutaran video.
+              </video>
+            </div>
+            <div class="video-info"><h3>Contoh format vertikal</h3><p>Cuplikan materi promosi untuk melihat tampilan overlay dalam format video pendek.</p></div>
+          </article>
+          <article class="video-card">
+            <div class="video-frame">
+              <video controls playsinline preload="none" poster="assets/poster-editing.jpg" aria-label="Video contoh hasil dan proses editing Quran Overlay">
+                <source src="assets/demo-editing.mp4" type="video/mp4">
+                Browser kamu belum mendukung pemutaran video.
+              </video>
+            </div>
+            <div class="video-info"><h3>Contoh proses dan hasil</h3><p>Lihat bagaimana elemen ayat tampil di atas footage serta gambaran aset saat disusun dalam proses editing.</p></div>
+          </article>
+        </div>
+        <p class="video-note">Video tidak diputar otomatis. Tekan tombol play untuk melihat contoh.</p>
+      </div>
+    </section>
+
+    <section class="section examples" id="contoh">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Pratinjau visual</span>
+          <h2>Kenali tampilannya <span>lebih dekat.</span></h2>
+          <p>Beberapa materi visual yang memperlihatkan pilihan terjemahan, segmentasi, dan pembaruan desain.</p>
+        </div>
+        <div class="gallery">
+          <figure><img src="assets/10.webp" alt="Perbandingan desain overlay versi sebelumnya dan versi terbaru" width="1080" height="1080" loading="lazy"><figcaption>Pembaruan desain<span>Tampilan ayat dan terjemahan yang diperbarui.</span></figcaption></figure>
+          <figure><img src="assets/8.webp" alt="Contoh segmentasi ayat panjang dalam tiga bagian" width="1080" height="1080" loading="lazy"><figcaption>Segmentasi ayat<span>Ayat panjang disusun menjadi beberapa segmen.</span></figcaption></figure>
+          <figure><img src="assets/9.webp" alt="Tiga pilihan tampilan terjemahan Indonesia, English, dan Dual Language" width="1080" height="1080" loading="lazy"><figcaption>Pilihan bahasa<span>Indonesia, English, atau gabungan keduanya.</span></figcaption></figure>
+          <figure><img src="assets/7.webp" alt="Mockup contoh overlay Quran dalam timeline editing" width="1080" height="1080" loading="lazy"><figcaption>Contoh di timeline<span>File PNG diposisikan di atas footage video.</span></figcaption></figure>
+          <figure><img src="assets/6.webp" alt="Mockup kemasan Overlay PNG Quran Vertical Full 30 Juz" width="1080" height="1080" loading="lazy"><figcaption>Gambaran produk<span>Aset editing video untuk konten vertikal.</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="paket">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Pilih sesuai kebutuhan</span>
+          <h2>Satu edisi atau <span>paket lengkap?</span></h2>
+          <p>Semua pilihan dirancang untuk kebutuhan konten yang berbeda. Tidak perlu mengambil paket paling besar bila satu bahasa sudah cukup.</p>
+        </div>
+        <p class="pricing-intro">Pilih Indonesia untuk konten berbahasa Indonesia, Dual Language untuk satu tampilan bilingual, atau Complete Bundle bila membutuhkan ketiga versi.</p>
+        <div class="price-grid">
+          <article class="price-card">
+            <span class="price-tag">Pilihan hemat</span>
+            <h3>Indonesia Edition</h3>
+            <p class="price-desc">Untuk konten dengan ayat Al-Qur’an dan terjemahan Bahasa Indonesia.</p>
+            <div class="price">Rp59.000</div>
+            <div class="price-sub">1 edisi • Full 30 juz</div>
+            <ul class="includes">
+              <li><span class="check">✓</span><span>Ayat Al-Qur’an + terjemah Indonesia (Kemenag RI)</span></li>
+              <li><span class="check">✓</span><span>File PNG siap pakai dengan background transparan</span></li>
+              <li><span class="check">✓</span><span>Segmentasi ayat untuk kebutuhan editing</span></li>
+            </ul>
+            <a class="btn btn-outline" href="https://lynk.id/ghifarapoetra/j7qnj89vyv5d" target="_blank" rel="noopener noreferrer sponsored" data-package="indonesia" data-price="59000">Pilih Indonesia <span class="arrow">↗</span></a>
+          </article>
+          <article class="price-card">
+            <span class="price-tag">Untuk konten bilingual</span>
+            <h3>Dual Language Edition</h3>
+            <p class="price-desc">Untuk satu tampilan yang memuat terjemahan Indonesia dan English.</p>
+            <div class="price">Rp79.000</div>
+            <div class="price-sub">1 edisi • Full 30 juz</div>
+            <ul class="includes">
+              <li><span class="check">✓</span><span>Ayat Al-Qur’an + terjemah Indonesia & English</span></li>
+              <li><span class="check">✓</span><span>Terjemah English: Shaheeh International</span></li>
+              <li><span class="check">✓</span><span>PNG transparan dan segmentasi ayat</span></li>
+            </ul>
+            <a class="btn btn-outline" href="https://lynk.id/ghifarapoetra/ng991wyjp1m3" target="_blank" rel="noopener noreferrer sponsored" data-package="dual-language" data-price="79000">Pilih Dual Language <span class="arrow">↗</span></a>
+          </article>
+          <article class="price-card featured">
+            <span class="recommend">REKOMENDASI PALING LENGKAP</span>
+            <span class="price-tag">Semua versi sekaligus</span>
+            <h3>Complete Bundle</h3>
+            <p class="price-desc">Untuk kreator yang ingin fleksibel menyiapkan konten dalam beberapa bahasa.</p>
+            <div class="price">Rp149.000</div>
+            <div class="price-sub">3 edisi lengkap • Full 30 juz</div>
+            <ul class="includes">
+              <li><span class="check">✓</span><span>Indonesia Edition</span></li>
+              <li><span class="check">✓</span><span>English Edition</span></li>
+              <li><span class="check">✓</span><span>Dual Language Edition</span></li>
+              <li><span class="check">✓</span><span>Ketiganya mencakup full 30 juz</span></li>
+            </ul>
+            <a class="btn btn-primary" href="https://lynk.id/ghifarapoetra/le7mll2e4lo0" target="_blank" rel="noopener noreferrer sponsored" data-package="complete-bundle" data-price="149000">Ambil Complete Bundle <span class="arrow">↗</span></a>
+          </article>
+        </div>
+        <p class="price-footnote">Harga di atas mengikuti tampilan halaman Lynk.id saat LP ini disusun. Harga final, detail isi, dan ketentuan pembelian mengikuti halaman checkout.</p>
+        <div class="decision-bridge">
+          <div><strong>Masih bingung pilih yang mana?</strong><p>Jika hanya membuat konten berbahasa Indonesia, edisi Indonesia sudah cukup. Bila ingin mengembangkan konten ke beberapa audiens atau format bahasa, Complete Bundle menyediakan ketiga versi sekaligus.</p></div>
+          <a class="btn btn-dark btn-small" href="https://lynk.id/ghifarapoetra/le7mll2e4lo0" target="_blank" rel="noopener noreferrer sponsored" data-package="complete-bundle-bridge" data-price="149000">Lihat paket lengkap <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section usage" id="penggunaan">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Untuk kebutuhan apa?</span>
+          <h2>Satu aset, banyak <span>format konten.</span></h2>
+          <p>Gunakan pada aplikasi editing video yang mendukung file PNG.</p>
+        </div>
+        <div class="usage-grid">
+          <article class="usage-item"><span class="usage-symbol">◉</span><strong>Video murottal</strong><p>Tampilkan ayat dan terjemahan mengikuti audio.</p></article>
+          <article class="usage-item"><span class="usage-symbol">▣</span><strong>Reels & Shorts</strong><p>Susun video vertikal dengan tampilan ayat.</p></article>
+          <article class="usage-item"><span class="usage-symbol">▶</span><strong>YouTube</strong><p>Gunakan sebagai elemen visual konten video.</p></article>
+          <article class="usage-item"><span class="usage-symbol">✦</span><strong>Konten dakwah</strong><p>Siapkan materi visual untuk konten Al-Qur’an.</p></article>
+        </div>
+        <div class="license-note"><strong>Perhatikan lisensinya:</strong> aset PNG boleh digunakan untuk membuat video sesuai ketentuan edisi yang dibeli, tetapi file mentahnya tidak boleh dijual kembali, dibagikan, atau didistribusikan ulang. Baca lisensi pada halaman produk sebelum checkout, terutama bila akan digunakan untuk pekerjaan klien.</div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Sebelum checkout</span>
+          <h2>Pertanyaan yang <span>sering muncul.</span></h2>
+          <p>Pastikan format, edisi, dan izin penggunaannya sesuai kebutuhan.</p>
+        </div>
+        <div class="faq-list">
+          <details><summary>Ini aplikasi editing atau file apa?</summary><p>Ini adalah aset berupa file PNG overlay ayat Al-Qur’an dan terjemahan, bukan aplikasi editing dan bukan kursus. File digunakan di software editing video yang mendukung format PNG.</p></details>
+          <details><summary>Apakah isinya lengkap 30 juz?</summary><p>Ya. Halaman produk menyebut cakupan dari Al-Fatihah sampai An-Naas. Pilihan edisi tunggal maupun Complete Bundle mengikuti deskripsi paket di halaman Lynk.id.</p></details>
+          <details><summary>Apa perbedaan tiga pilihannya?</summary><p>Indonesia Edition berisi terjemah Indonesia. Dual Language Edition berisi terjemah Indonesia dan English dalam satu tampilan. Complete Bundle berisi Indonesia Edition, English Edition, dan Dual Language Edition sekaligus.</p></details>
+          <details><summary>Apakah PNG-nya punya background transparan?</summary><p>Ya, halaman produk mencantumkan file PNG dengan background transparan agar bisa ditempatkan di atas footage video.</p></details>
+          <details><summary>Bisa digunakan di CapCut atau aplikasi editing lain?</summary><p>Gunakan pada aplikasi editing yang mendukung impor PNG. Kompatibilitas dan kemudahan workflow tetap bergantung pada aplikasi serta perangkat yang digunakan.</p></details>
+          <details><summary>Boleh membagikan atau menjual kembali file PNG?</summary><p>Tidak. Ketentuan produk melarang penjualan ulang maupun distribusi ulang file sumber. Yang digunakan adalah aset untuk membuat karya video, bukan untuk dibagikan sebagai file mentah.</p></details>
+          <details><summary>Boleh digunakan untuk video milik klien?</summary><p>Ketentuan penggunaan dapat berbeda antar-edisi. Periksa lisensi pada halaman checkout dari edisi yang dipilih. Jangan menganggap izin dari satu edisi otomatis berlaku untuk edisi lainnya.</p></details>
+          <details><summary>Bagaimana cara mendapatkan produknya?</summary><p>Pilih edisi, lanjutkan ke halaman Lynk.id, lalu ikuti instruksi pembayaran dan pengiriman digital yang tersedia di sana. Detail transaksi dan akses file dikelola oleh halaman penjual.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container">
+        <span class="eyebrow">Siap merapikan workflow?</span>
+        <h2>Ayatnya sudah disiapkan. <span>Saatnya fokus berkarya.</span></h2>
+        <p>Lihat contoh, tentukan format bahasa yang dibutuhkan, lalu pilih edisi yang paling sesuai.</p>
+        <a class="btn btn-primary" href="#paket">Pilih edisi Overlay Quran <span class="arrow">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">QURAN OVERLAY</div>
+        <div class="disclosure">Halaman rekomendasi affiliate oleh Ghifara Poetra. Saya dapat menerima komisi dari pembelian melalui tautan affiliate di halaman ini. Produk dan transaksi disediakan oleh penjual melalui Lynk.id; saya bukan pembuat produk.</div>
+        <div style="margin-top:10px">© <span id="year"></span> • Informasi harga dapat berubah mengikuti halaman penjual.</div>
+      </div>
+      <div class="footer-links"><a href="#isi">Detail produk</a><a href="#paket">Pilihan paket</a><a href="#faq">FAQ</a><a href="https://lynk.id/ghifarapoetra" target="_blank" rel="noopener noreferrer">Lynk.id</a></div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta"><a class="btn btn-primary" href="#paket">Lihat pilihan paket <span class="arrow">↑</span></a></div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau gambar">
+    <button type="button" aria-label="Tutup pratinjau" id="lightbox-close">×</button>
+    <img src="" alt="" id="lightbox-image">
+  </div>
+  <script>
+    // Tahun footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Catat klik keluar ke halaman affiliate. Ini hanya mengukur klik, bukan pembelian.
+    document.querySelectorAll('a[data-package]').forEach(function(link){
+      link.addEventListener('click', function(){
+        if (typeof window.fbq === 'function') {
+          window.fbq('trackCustom', 'AffiliateOutboundClick', {
+            package_name: link.dataset.package || 'unknown',
+            displayed_price_idr: Number(link.dataset.price || 0)
+          });
+        }
+      });
+    });
+
+    // Lightbox pratinjau gambar
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeLightbox = function(){ lightbox.classList.remove('open'); lightboxImage.src=''; document.body.style.overflow=''; };
+    document.querySelectorAll('.gallery img').forEach(function(img){
+      img.addEventListener('click', function(){
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightbox.classList.add('open');
+        document.body.style.overflow='hidden';
+      });
+    });
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(event){ if(event.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', function(event){ if(event.key === 'Escape') closeLightbox(); });
+  </script>
+</body>
+</html>
