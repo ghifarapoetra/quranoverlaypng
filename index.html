@@ -193,6 +193,66 @@
     .lightbox img{max-width:min(100%,1100px);max-height:88vh;width:auto;border-radius:12px;box-shadow:0 20px 70px rgba(0,0,0,.35)}
     .lightbox button{position:absolute;top:18px;right:22px;width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#111;font-size:1.6rem;cursor:pointer}
 
+
+
+    /* Motion system: calm, purposeful, and lightweight */
+    .scroll-progress{position:fixed;inset:0 0 auto;height:3px;z-index:100;background:transparent;pointer-events:none}
+    .scroll-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#a87825,#e1c27d);box-shadow:0 0 9px rgba(180,131,46,.35);transition:width .08s linear}
+    .type-reveal{display:inline-block;white-space:nowrap;clip-path:inset(0 100% 0 0);animation:typeReveal .8s steps(5,end) .42s forwards}
+    @keyframes typeReveal{to{clip-path:inset(0 0 0 0)}}
+    @keyframes heroEnter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+    @keyframes popupIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes softGlow{0%{box-shadow:0 8px 25px rgba(38,33,24,.035)}100%{box-shadow:0 18px 42px rgba(129,94,34,.13)}}
+    .hero-copy>.eyebrow{animation:heroEnter .65s cubic-bezier(.22,1,.36,1) both}
+    .hero h1{animation:heroEnter .72s cubic-bezier(.22,1,.36,1) .08s both}
+    .hero-lead{animation:heroEnter .72s cubic-bezier(.22,1,.36,1) .18s both}
+    .hero-points{animation:heroEnter .72s cubic-bezier(.22,1,.36,1) .27s both}
+    .hero-actions{animation:heroEnter .72s cubic-bezier(.22,1,.36,1) .36s both}
+    .micro-trust{animation:heroEnter .72s cubic-bezier(.22,1,.36,1) .43s both}
+    .hero-visual{animation:heroEnter .9s cubic-bezier(.22,1,.36,1) .2s both,heroFloat 7s ease-in-out 1.2s infinite}
+    .hero-product{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
+    .hero-product:hover{transform:translateY(-5px) rotate(.25deg);box-shadow:0 24px 62px rgba(45,38,22,.14)}
+
+    body.motion-ready .reveal{opacity:0;transform:translate3d(0,24px,0);transition:opacity .72s cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms),transform .72s cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms);will-change:opacity,transform}
+    body.motion-ready .reveal.reveal-left{transform:translate3d(-25px,0,0)}
+    body.motion-ready .reveal.reveal-right{transform:translate3d(25px,0,0)}
+    body.motion-ready .reveal.is-visible{opacity:1;transform:translate3d(0,0,0);will-change:auto}
+
+    .feature,.video-card,.gallery figure,.price-card,.usage-item,.workflow-step,.decision-bridge,details{transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease,border-color .28s ease}
+    .btn{transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .22s ease,background .22s ease}
+    .btn:active{transform:translateY(0) scale(.98)}
+    .btn .arrow{display:inline-block;transition:transform .22s cubic-bezier(.22,1,.36,1)}
+    .btn:hover .arrow{transform:translate(3px,-1px)}
+    .feature:hover,.video-card:hover,.gallery figure:hover,.usage-item:hover,.workflow-step:hover{transform:translateY(-5px);box-shadow:0 15px 34px rgba(32,33,30,.09);border-color:#ddcfb4}
+    .price-card:hover{transform:translateY(-5px);box-shadow:0 17px 38px rgba(38,33,24,.09);border-color:#d9bd84}
+    .price-card.featured:hover{transform:translateY(-13px);box-shadow:0 22px 46px rgba(129,94,34,.18)}
+    .video-frame video{transition:filter .25s ease}
+    .video-card:hover .video-frame video{filter:brightness(1.04)}
+    details[open]{border-color:#d9c18f;box-shadow:0 8px 22px rgba(32,33,30,.045)}
+    summary:after{transition:transform .2s ease}
+    details[open] summary:after{transform:rotate(180deg)}
+    .stat strong{font-variant-numeric:tabular-nums}
+
+    /* Helpful popup: delayed/exit-intent, dismissible, and never promises a fake offer */
+    .assist-overlay{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:22px;background:rgba(20,21,18,.52);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+    .assist-overlay[hidden]{display:none}
+    .assist-popup-card{position:relative;width:min(100%,470px);padding:34px 32px 27px;background:#fffefa;color:var(--ink);border:1px solid rgba(235,224,203,.9);border-radius:25px;box-shadow:0 28px 90px rgba(0,0,0,.22);animation:popupIn .34s cubic-bezier(.22,1,.36,1) both}
+    .assist-close{position:absolute;top:15px;right:15px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:#fff;color:#555;font-size:1.45rem;line-height:1;cursor:pointer;transition:transform .2s ease,background .2s ease}
+    .assist-close:hover{transform:rotate(90deg);background:var(--cream)}
+    .assist-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--gold-dark);font-size:.7rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding-right:40px}
+    .assist-dot{width:7px;height:7px;border-radius:50%;background:#6c8b62;box-shadow:0 0 0 4px rgba(108,139,98,.13)}
+    .assist-popup-card h2{font-size:clamp(1.75rem,6vw,2.2rem);line-height:1.08;letter-spacing:-.055em;margin:16px 0 12px;max-width:370px}
+    .assist-popup-card>p{color:var(--muted);font-size:.91rem;line-height:1.65;margin:0}
+    .assist-actions{display:grid;gap:11px;margin-top:23px}
+    .assist-actions .btn{width:100%}
+    .assist-secondary{display:block;text-align:center;color:var(--gold-dark);font-size:.84rem;font-weight:850;text-decoration:none;padding:7px}
+    .assist-secondary:hover{text-decoration:underline}
+    .assist-popup-card .assist-footnote{border-top:1px solid var(--line);padding-top:15px;margin-top:14px;font-size:.7rem;color:#85857d;text-align:center}
+    body.popup-open{overflow:hidden}
+
+    @media(hover:none){.feature:hover,.video-card:hover,.gallery figure:hover,.usage-item:hover,.workflow-step:hover,.price-card:hover,.price-card.featured:hover,.hero-product:hover{transform:none;box-shadow:inherit}}
+
     @media(max-width:950px){
       .hero-grid{gap:34px;grid-template-columns:1fr .9fr}
       .hero h1{font-size:clamp(2.6rem,6.1vw,4rem)}
@@ -257,6 +317,9 @@
       .decision-bridge .btn{width:100%}
       .usage-grid{grid-template-columns:1fr 1fr;gap:9px}
       .usage-item{padding:15px}
+      .hero-visual{animation:heroEnter .9s cubic-bezier(.22,1,.36,1) .2s both}
+      .assist-popup-card{padding:29px 23px 22px;border-radius:21px}
+      .assist-popup-card h2{font-size:1.8rem}
       .footer-inner{display:block}
       .footer-links{margin-top:17px;white-space:normal}
       .mobile-cta{display:block;position:fixed;z-index:25;bottom:0;left:0;right:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,254,250,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
@@ -268,7 +331,7 @@
       .hero h1{font-size:2.55rem}
       .stat strong{font-size:1.2rem}
     }
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.type-reveal{clip-path:none!important}}
   </style>
   <!-- OPSIONAL: Pasang Meta Pixel setelah membuat Pixel di Events Manager.
        Ganti YOUR_META_PIXEL_ID dengan ID milikmu. Jangan aktifkan sebelum ID benar. -->
@@ -281,6 +344,7 @@
   </script>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Overlay Quran, kembali ke atas">
@@ -300,7 +364,7 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <span class="eyebrow">Aset editing video • Full 30 juz</span>
-          <h1>Editing murottal <span>tanpa</span> repot copas ayat.</h1>
+          <h1>Editing murottal <span class="type-reveal">tanpa</span> repot copas ayat.</h1>
           <p class="hero-lead">Ayat Al-Qur’an dan terjemahannya sudah disiapkan dalam file PNG transparan. Pilih file, pasang ke timeline, sesuaikan durasi, lalu lanjutkan editing.</p>
           <div class="hero-points">
             <span class="pill"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Full 30 juz</span>
@@ -321,9 +385,9 @@
 
     <section class="stat-strip" aria-label="Ringkasan produk">
       <div class="container stats">
-        <div class="stat"><strong>30 Juz</strong><span>Dari Al-Fatihah sampai An-Naas</span></div>
-        <div class="stat"><strong>58.000+</strong><span>File PNG yang tercantum di halaman produk</span></div>
-        <div class="stat"><strong>3 versi</strong><span>Indonesia, English, dan Dual Language</span></div>
+        <div class="stat"><strong data-counter="30" data-suffix=" Juz">30 Juz</strong><span>Dari Al-Fatihah sampai An-Naas</span></div>
+        <div class="stat"><strong data-counter="58000" data-format="id" data-suffix="+">58.000+</strong><span>File PNG yang tercantum di halaman produk</span></div>
+        <div class="stat"><strong data-counter="3" data-suffix=" versi">3 versi</strong><span>Indonesia, English, dan Dual Language</span></div>
       </div>
     </section>
 
@@ -552,6 +616,20 @@
   </footer>
 
   <div class="mobile-cta"><a class="btn btn-primary" href="#paket">Lihat pilihan paket <span class="arrow">↑</span></a></div>
+
+  <div class="assist-overlay" id="assist-popup" hidden>
+    <section class="assist-popup-card" role="dialog" aria-modal="true" aria-labelledby="assist-title" aria-describedby="assist-copy">
+      <button class="assist-close" type="button" id="assist-close" aria-label="Tutup popup">×</button>
+      <span class="assist-kicker"><span class="assist-dot"></span> Masih ingin melihat lebih dulu?</span>
+      <h2 id="assist-title">Lihat cara pakainya sebelum memilih.</h2>
+      <p id="assist-copy">Cek contoh video dan alur editing-nya. Setelah itu, kamu bisa membandingkan edisi yang paling sesuai dengan kebutuhan kontenmu.</p>
+      <div class="assist-actions">
+        <a class="btn btn-primary" href="#demo" data-popup-close>Lihat contoh pemakaian <span class="arrow">→</span></a>
+        <a class="assist-secondary" href="#paket" data-popup-close>Langsung bandingkan paket</a>
+      </div>
+      <p class="assist-footnote">Tidak ada diskon atau batas waktu palsu. Pilih setelah yakin.</p>
+    </section>
+  </div>
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau gambar">
     <button type="button" aria-label="Tutup pratinjau" id="lightbox-close">×</button>
     <img src="" alt="" id="lightbox-image">
@@ -559,6 +637,130 @@
   <script>
     // Tahun footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Respect accessibility settings and progressively enhance motion only when supported.
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const revealTargets = document.querySelectorAll(
+        '.section-head,.problem-copy,.workflow-card,.feature,.video-card,.gallery figure,.price-card,.decision-bridge,.usage-item,.faq-list details,.closing .container'
+      );
+      revealTargets.forEach(function(node, index){
+        node.classList.add('reveal');
+        node.style.setProperty('--reveal-delay', (Math.min(index % 4, 3) * 75) + 'ms');
+      });
+      document.body.classList.add('motion-ready');
+      const revealObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -42px 0px' });
+      revealTargets.forEach(function(node){ revealObserver.observe(node); });
+    }
+
+    // Count key product figures once when they enter the viewport.
+    const counters = document.querySelectorAll('[data-counter]');
+    function renderCounter(el, value){
+      const number = Math.round(value);
+      const formatted = el.dataset.format === 'id' ? new Intl.NumberFormat('id-ID').format(number) : String(number);
+      el.textContent = (el.dataset.prefix || '') + formatted + (el.dataset.suffix || '');
+    }
+    function animateCounter(el){
+      if (el.dataset.counted === 'true') return;
+      el.dataset.counted = 'true';
+      const target = Number(el.dataset.counter || 0);
+      if (!Number.isFinite(target) || target <= 0 || reduceMotion) { renderCounter(el, target); return; }
+      const duration = 1050;
+      const start = performance.now();
+      function tick(now){
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        renderCounter(el, target * eased);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      const counterObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) { animateCounter(entry.target); counterObserver.unobserve(entry.target); }
+        });
+      }, { threshold: 0.6 });
+      counters.forEach(function(el){ counterObserver.observe(el); });
+    }
+
+    // Reading progress bar, throttled to one visual update per animation frame.
+    const progressBar = document.getElementById('scroll-progress-bar');
+    let progressQueued = false;
+    function updateReadingProgress(){
+      if (progressQueued) return;
+      progressQueued = true;
+      requestAnimationFrame(function(){
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = maxScroll > 0 ? Math.max(0, Math.min(100, window.scrollY / maxScroll * 100)) : 0;
+        progressBar.style.width = percent + '%';
+        progressQueued = false;
+      });
+    }
+    window.addEventListener('scroll', updateReadingProgress, {passive:true});
+    window.addEventListener('resize', updateReadingProgress);
+    updateReadingProgress();
+
+    // One-time assist popup. It offers a useful next step, not a fake discount or urgency claim.
+    const assistPopup = document.getElementById('assist-popup');
+    const assistClose = document.getElementById('assist-close');
+    let popupShown = false;
+    let previousFocus = null;
+    const popupStorageKey = 'ovq-assist-popup-shown-v1';
+    function wasPopupShown(){
+      try { return sessionStorage.getItem(popupStorageKey) === '1'; } catch (error) { return false; }
+    }
+    function reachedPricing(){
+      const pricing = document.getElementById('paket');
+      if (!pricing) return false;
+      const rect = pricing.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+    function openAssistPopup(){
+      if (popupShown || wasPopupShown() || document.hidden || window.scrollY < 280 || reachedPricing()) return;
+      popupShown = true;
+      try { sessionStorage.setItem(popupStorageKey, '1'); } catch (error) { /* session storage may be unavailable */ }
+      previousFocus = document.activeElement;
+      assistPopup.hidden = false;
+      document.body.classList.add('popup-open');
+      assistClose.focus();
+    }
+    function closeAssistPopup(){
+      if (assistPopup.hidden) return;
+      assistPopup.hidden = true;
+      document.body.classList.remove('popup-open');
+      if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+    }
+    assistClose.addEventListener('click', closeAssistPopup);
+    assistPopup.addEventListener('click', function(event){ if (event.target === assistPopup) closeAssistPopup(); });
+    assistPopup.querySelectorAll('[data-popup-close]').forEach(function(link){ link.addEventListener('click', closeAssistPopup); });
+    document.addEventListener('keydown', function(event){
+      if (event.key === 'Escape' && !assistPopup.hidden) closeAssistPopup();
+      if (event.key === 'Tab' && !assistPopup.hidden) {
+        const focusables = assistPopup.querySelectorAll('a[href],button:not([disabled])');
+        const first = focusables[0], last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+    // Desktop: offer help when the pointer is leaving the page. Mobile: wait until the visitor has browsed.
+    document.addEventListener('mouseout', function(event){
+      if (window.innerWidth > 760 && event.clientY <= 0 && event.relatedTarget === null) openAssistPopup();
+    });
+    window.setTimeout(function(){
+      if (window.innerWidth <= 760) {
+        if (window.scrollY > 360) openAssistPopup();
+      } else if (window.scrollY > 430) {
+        openAssistPopup();
+      }
+    }, 30000);
 
     // Catat klik keluar ke halaman affiliate. Ini hanya mengukur klik, bukan pembelian.
     document.querySelectorAll('a[data-package]').forEach(function(link){

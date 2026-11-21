@@ -4,7 +4,7 @@ Landing page statis (HTML/CSS/JS) untuk promosi affiliate Overlay PNG Quran Vert
 
 ## Isi folder
 
-- `index.html` — halaman utama, copywriting, layout responsif, FAQ, lightbox, dan event klik affiliate.
+- `index.html` — halaman utama, copywriting, layout responsif, FAQ, lightbox, scroll reveal, counter angka, progress bar, popup bantuan satu kali per sesi, dan event klik affiliate.
 - `assets/` — poster promosi yang dioptimalkan ke WebP, dua video promosi yang dikompresi, poster video, favicon, dan gambar Open Graph.
 - Semua tautan paket sudah dipasang ke tiga link affiliate Lynk.id yang diberikan.
 
@@ -66,6 +66,9 @@ Copy halaman juga menjelaskan batas penggunaan: file PNG mentah tidak boleh diju
 ## Prinsip halaman
 
 - Mobile-first, gambar WebP, video tidak autoplay dan memakai `preload="none"`.
+- Animasi masuk bertahap saat scroll, efek ketik singkat pada headline, counter angka saat terlihat, dan indikator progres baca.
+- Interaksi hover/focus yang halus pada kartu dan tombol; popup bantuan hanya muncul setelah pengunjung cukup menjelajah atau menunjukkan exit intent di desktop.
+- Semua animasi menghormati `prefers-reduced-motion`; tidak memakai library animasi eksternal.
 - Tidak memakai countdown, stok terbatas, testimoni, angka penjualan, atau klaim yang belum didukung materi produk.
 - Perbedaan paket dan harga ditampilkan sebelum pengunjung menuju checkout.
 - CTA utama menuju bagian pilihan paket; setiap tombol paket menuju link affiliate yang sesuai.
